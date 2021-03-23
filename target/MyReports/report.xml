@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="6" time="7.113">
+    <testcase classname="Verify different features of Exchange Rates API for specific mentioned Date" name="Verify if Current Date Exchange rate response is received while triggering request for any future date" time="3.329">
+        <system-out>
+            <![CDATA[Given Currency-exchange rate API is up and running..........................passed
+When I hit the API URL for the mentioned future date exchange rate "/2021-03-25".passed
+Then API returns the success response with status code as 200...............passed
+And The response with Current date is received..............................passed
+]]>
+        </system-out>
+    </testcase>
+    <testcase classname="Verify different features of Exchange Rates API" name="Verify if 400 BAD VALUE ERROR response is received for incorrect URL for Exchange rates request" time="1.829">
+        <system-out>
+            <![CDATA[Given Exchange rate API is up and running...................................passed
+When I hit the API URL with endpoint as "/351latest"........................passed
+Then API Error Code 400 should be displayed.................................passed
+]]>
+        </system-out>
+    </testcase>
+    <testcase classname="Verify different features of Exchange Rates API" name="Verify the success Status is received while hitting for Exchange Rate request" time="0.148">
+        <system-out>
+            <![CDATA[Given Currency Exchange rate API is up and running..........................passed
+When I hit the API URL for the latest currency exchange rates with endpoint as "/latest".passed
+Then API returns the response with status code as 200.......................passed
+]]>
+        </system-out>
+    </testcase>
+    <testcase classname="Verify different features of Exchange Rates API" name="Verify the Response is generated for Latest Exchange rates request" time="0.28">
+        <system-out>
+            <![CDATA[Given Currency Exchange rate API is up and running..........................passed
+When I hit the API URL for the latest currency exchange rates with endpoint as "/latest".passed
+Then API returns the response with status code as 200.......................passed
+And Response is getting pulled with all the exchange rate data for different currencies.passed
+]]>
+        </system-out>
+    </testcase>
+    <testcase classname="Verify different features of Exchange Rates API for specific mentioned Date" name="Verify if Success Status Code is generated while triggering GET Request for specific date" time="0.454">
+        <system-out>
+            <![CDATA[Given Currency-Exchange rate API is up and running..........................passed
+When I hit the API URL for the specific date exchange rate with endpoint as "/2021-03-17".passed
+Then API return the response with status code as 200........................passed
+]]>
+        </system-out>
+    </testcase>
+    <testcase classname="Verify different features of Exchange Rates API for specific mentioned Date" name="Verify the Response is received while hitting Exchange rate Request with specific Date" time="0.571">
+        <system-out>
+            <![CDATA[Given Currency-Exchange rate API is up and running..........................passed
+When I hit the API URL for the specific date exchange rate with endpoint as "/2021-03-17".passed
+Then API return the response with status code as 200........................passed
+And Response is getting pulled for the specific date........................passed
+]]>
+        </system-out>
+    </testcase>
+</testsuite>
