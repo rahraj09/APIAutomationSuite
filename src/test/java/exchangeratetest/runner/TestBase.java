@@ -1,8 +1,11 @@
 package exchangeratetest.runner;
 
 import java.io.FileInputStream;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
+import java.util.TimeZone;
 
 public class TestBase {
 	protected String server = LoadProperties().getProperty("url");
@@ -21,4 +24,17 @@ public class TestBase {
 
 	}
 
+	/* Function to get the Current European Date and Time */
+
+	public static String EuropeanDate() {
+		Date date1 = new java.util.Date();
+
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+
+		// Use Madrid's time zone to format the date in
+		df.setTimeZone(TimeZone.getTimeZone("Europe/Madrid"));
+
+		String date = df.format(date1);
+		return date;
+	}
 }

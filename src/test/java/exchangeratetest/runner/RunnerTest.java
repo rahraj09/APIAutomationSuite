@@ -15,7 +15,7 @@ import io.cucumber.junit.CucumberOptions;
                  plugin = {"pretty",
                 		   "json:target/MyReports/report.json",
                 		   "junit:target/MyReports/report.xml",
-                		   //"html:target/MyReports/report.html"
+                		   "html:target/MyReports/report.html"
                 		   },
                  publish=true
 

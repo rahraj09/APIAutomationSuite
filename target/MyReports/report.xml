@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="6" time="7.113">
-    <testcase classname="Verify different features of Exchange Rates API for specific mentioned Date" name="Verify if Current Date Exchange rate response is received while triggering request for any future date" time="3.329">
+<testsuite errors="0" failures="1" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="7" time="7.173">
+    <testcase classname="Verify different features of Exchange Rates API for specific mentioned Date" name="Verify if Current Date Exchange rate response is received while triggering request for any future date" time="3.684">
         <system-out>
             <![CDATA[Given Currency-exchange rate API is up and running..........................passed
-When I hit the API URL for the mentioned future date exchange rate "/2021-03-25".passed
+When I hit the API URL for the mentioned future date exchange rate "/2030-10-30".passed
 Then API returns the success response with status code as 200...............passed
-And The response with Current date is received..............................passed
+And The response with most latest available date API is received............passed
 ]]>
         </system-out>
     </testcase>
-    <testcase classname="Verify different features of Exchange Rates API" name="Verify if 400 BAD VALUE ERROR response is received for incorrect URL for Exchange rates request" time="1.829">
+    <testcase classname="Verify different features of Exchange Rates API" name="Verify if Status Code 400 is received for incorrect URL for Exchange rates request" time="0.73">
         <system-out>
             <![CDATA[Given Exchange rate API is up and running...................................passed
 When I hit the API URL with endpoint as "/351latest"........................passed
-Then API Error Code 400 should be displayed.................................passed
+Then API Status Code 400 should be displayed................................passed
 ]]>
         </system-out>
     </testcase>
-    <testcase classname="Verify different features of Exchange Rates API" name="Verify the success Status is received while hitting for Exchange Rate request" time="0.148">
+    <testcase classname="Verify different features of Exchange Rates API" name="Verify the success Status is received while hitting for Exchange Rate request" time="0.534">
         <system-out>
             <![CDATA[Given Currency Exchange rate API is up and running..........................passed
 When I hit the API URL for the latest currency exchange rates with endpoint as "/latest".passed
@@ -25,7 +25,7 @@ Then API returns the response with status code as 200.......................pass
 ]]>
         </system-out>
     </testcase>
-    <testcase classname="Verify different features of Exchange Rates API" name="Verify the Response is generated for Latest Exchange rates request" time="0.28">
+    <testcase classname="Verify different features of Exchange Rates API" name="Verify the Response is generated for Latest Exchange rates request" time="0.21">
         <system-out>
             <![CDATA[Given Currency Exchange rate API is up and running..........................passed
 When I hit the API URL for the latest currency exchange rates with endpoint as "/latest".passed
@@ -34,18 +34,70 @@ And Response is getting pulled with all the exchange rate data for different cur
 ]]>
         </system-out>
     </testcase>
-    <testcase classname="Verify different features of Exchange Rates API for specific mentioned Date" name="Verify if Success Status Code is generated while triggering GET Request for specific date" time="0.454">
+    <testcase classname="Verify if Exchange Rate Response can be extracted for a particular date from European Exchange Rate API" name="Verify if Latest Date Exchange rate response is received while triggering request for any future date" time="0.588">
+        <failure message="1 expectation failed.&#10;Expected status code &lt;200&gt; but was &lt;400&gt;.&#10;" type="java.lang.AssertionError">
+            <![CDATA[Given European Exchange rate API is up and running..........................passed
+When I hit the European Exchange Rate API for the mentioned date "/10-10-2021".passed
+Then Exchange Rate API returns the response with status code as 200.........failed
+
+StackTrace:
+java.lang.AssertionError: 1 expectation failed.
+Expected status code <200> but was <400>.
+
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:490)
+	at org.codehaus.groovy.reflection.CachedConstructor.invoke(CachedConstructor.java:72)
+	at org.codehaus.groovy.reflection.CachedConstructor.doConstructorInvoke(CachedConstructor.java:59)
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrap.callConstructor(ConstructorSite.java:84)
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCallConstructor(CallSiteArray.java:59)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:263)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:277)
+	at io.restassured.internal.ResponseSpecificationImpl$HamcrestAssertionClosure.validate(ResponseSpecificationImpl.groovy:493)
+	at io.restassured.internal.ResponseSpecificationImpl$HamcrestAssertionClosure$validate$1.call(Unknown Source)
+	at io.restassured.internal.ResponseSpecificationImpl.validateResponseIfRequired(ResponseSpecificationImpl.groovy:674)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.codehaus.groovy.runtime.callsite.PlainObjectMetaMethodSite.doInvoke(PlainObjectMetaMethodSite.java:43)
+	at org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite$PogoCachedMethodSiteNoUnwrapNoCoerce.invoke(PogoMetaMethodSite.java:193)
+	at org.codehaus.groovy.runtime.callsite.PogoMetaMethodSite.callCurrent(PogoMetaMethodSite.java:61)
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:185)
+	at io.restassured.internal.ResponseSpecificationImpl.statusCode(ResponseSpecificationImpl.groovy:126)
+	at io.restassured.specification.ResponseSpecification$statusCode$0.callCurrent(Unknown Source)
+	at io.restassured.internal.ResponseSpecificationImpl.statusCode(ResponseSpecificationImpl.groovy:134)
+	at io.restassured.internal.ValidatableResponseOptionsImpl.statusCode(ValidatableResponseOptionsImpl.java:89)
+	at io.restassured.internal.ValidatableResponseImpl.super$2$statusCode(ValidatableResponseImpl.groovy)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:107)
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:323)
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1268)
+	at org.codehaus.groovy.runtime.ScriptBytecodeAdapter.invokeMethodOnSuperN(ScriptBytecodeAdapter.java:144)
+	at io.restassured.internal.ValidatableResponseImpl.statusCode(ValidatableResponseImpl.groovy:142)
+	at io.restassured.internal.ValidatableResponseImpl.statusCode(ValidatableResponseImpl.groovy)
+	at exchangeratetest.stepdef.NegativeScenario.api_returns_the_success_response_with_status_code_as(NegativeScenario.java:46)
+	at ✽.Exchange Rate API returns the response with status code as 200(file:///C:/Users/Rahul/eclipse-workspace/ExchangeRateAPIProject/src/test/resources/Features/NegativeScenario.feature:7)
+]]>
+        </failure>
+    </testcase>
+    <testcase classname="Verify different features of Exchange Rates API for specific mentioned Date" name="Verify the Response is received while hitting Exchange rate Request with specific Date" time="0.4">
         <system-out>
             <![CDATA[Given Currency-Exchange rate API is up and running..........................passed
 When I hit the API URL for the specific date exchange rate with endpoint as "/2021-03-17".passed
 Then API return the response with status code as 200........................passed
+And Response is getting pulled for the specific date........................passed
 ]]>
         </system-out>
     </testcase>
-    <testcase classname="Verify different features of Exchange Rates API for specific mentioned Date" name="Verify the Response is received while hitting Exchange rate Request with specific Date" time="0.571">
+    <testcase classname="Verify different features of Exchange Rates API for specific mentioned Date" name="Verify the Response is received while hitting Exchange rate Request with specific Date 2" time="0.534">
         <system-out>
             <![CDATA[Given Currency-Exchange rate API is up and running..........................passed
-When I hit the API URL for the specific date exchange rate with endpoint as "/2021-03-17".passed
+When I hit the API URL for the specific date exchange rate with endpoint as "/2021-03-12".passed
 Then API return the response with status code as 200........................passed
 And Response is getting pulled for the specific date........................passed
 ]]>
